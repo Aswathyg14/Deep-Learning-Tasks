@@ -3,3 +3,6 @@ numpy
 Pillow
 tensorflow
 tqdm
+torch
+opencv-python
+gdown
