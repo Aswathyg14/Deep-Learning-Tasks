@@ -5,6 +5,8 @@ from tensorflow.keras.models import load_model
 from tensorflow.keras.datasets import imdb
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 import pickle
+import torch
+import gdown
 
 # Load word index for Sentiment Classification
 word_to_index = imdb.get_word_index()
@@ -69,7 +71,12 @@ elif task == "Tumor Detection":
 
     if uploaded_file is not None:
         # Load the tumor detection model
-        model = load_model('CN.keras')
+        
+        model_link = "https://drive.google.com/file/d/1FOR9ODFcLw4umkjsoA7jUakvz9vHATFf/view?usp=sharing"
+        output_file = 'CNN.keras'
+        # Load the tumor detection model
+        gdown.download(model_link, output_file, quiet=False)
+        model = torch.load(output_file)
         st.image(uploaded_file, caption="Uploaded Image.", use_column_width=False, width=200)
         st.write("")
 
